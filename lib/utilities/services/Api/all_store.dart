@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:restaurants_sys/models/stores.dart';
-import 'package:restaurants_sys/utilities/services/all_store.dart';
+import 'package:restaurants_sys/utilities/services/Api/all_store.dart';
 import 'package:http/http.dart' as http;
 
 class AllStores {
