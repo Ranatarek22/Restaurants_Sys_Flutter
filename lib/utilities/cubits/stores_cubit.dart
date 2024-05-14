@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restaurants_sys/models/stores.dart';
+import 'package:restaurants_sys/models/store_model.dart';
 
-import 'package:restaurants_sys/utilities/services/Api/all_store.dart';
+import 'package:restaurants_sys/utilities/services/stores_service.dart';
 
 // Store Cubit
 class StoreCubit extends Cubit<List<Store>> {
-  final AllStores allStores = AllStores();
+  final StoresService allStores = StoresService();
 
   StoreCubit() : super([]);
 

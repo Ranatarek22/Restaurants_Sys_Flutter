@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Store {
   final String id;
   final String name;
@@ -6,7 +8,7 @@ class Store {
   final double longitude;
   final String updatedAt;
   final String createdAt;
-  final List<dynamic> users;
+  final List<dynamic>? users;
 
   Store({
     required this.id,
@@ -16,10 +18,10 @@ class Store {
     required this.longitude,
     required this.updatedAt,
     required this.createdAt,
-    required this.users,
+    @required this.users,
   });
 
-  factory Store.fromJson(Map<String, dynamic> json) {
+  factory Store.fromJson(json) {
     return Store(
       id: json['id'],
       name: json['name'],
