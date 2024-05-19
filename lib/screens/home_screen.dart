@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_sys/screens/search_screen.dart';
 import 'package:restaurants_sys/screens/stores_screen.dart';
-// import '../utilities/cubits/them_cubit.dart';
+import '../utilities/cubits/them_cubit.dart';
+import 'auth/auth_screen.dart';
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -18,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _screens = <Widget>[
     const StoresScreen(),
     SearchScreen(), // Add your other screens here
-    const Placeholder(),
-    const Placeholder(),
+    Placeholder(),
+    AuthScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -36,19 +37,19 @@ class _HomeScreenState extends State<HomeScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: '',
+            label: 'home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: '',
+            label: 'search',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: '',
+            label: 'favorites',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: '',
+            label: 'profile',
           ),
         ],
         currentIndex: _selectedIndex,
