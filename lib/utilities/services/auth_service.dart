@@ -1,4 +1,3 @@
-
 import 'package:restaurants_sys/models/user_model.dart';
 import '../helpers/api_config.dart';
 import '../secure_storage.dart';
@@ -6,7 +5,7 @@ import '../secure_storage.dart';
 class AuthService {
   Future<UserModel> getActiveUser(String token) async {
     Map<String, dynamic> data = await ApiConfig().get(
-      endpoint: 'api/active_user',
+      endpoint: 'api/auth/active_user',
       token: token,
     );
 
@@ -23,10 +22,9 @@ class AuthService {
       body: userData,
     );
 
-
     String? token = data['token'];
 
-    print(token);
+    // print(token);
     if (token != null && token.isNotEmpty) {
       // Save token securely
       await SecureStorage.setItem("auth_token", token);

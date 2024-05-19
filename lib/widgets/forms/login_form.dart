@@ -107,7 +107,7 @@ class _LoginFormState extends State<LoginForm> {
             fieldValidate: emailValidate,
             icon: Icons.email,
             label: "Email",
-            placeholder: "studentID@stud.fci-cu.edu.eg",
+            placeholder: "johndoe@example.com",
             enabled: !_isSubmitting,
           ),
           const SizedBox(
@@ -150,7 +150,7 @@ class _LoginFormState extends State<LoginForm> {
                           width: 10,
                         ),
                         SpinKitDoubleBounce(
-                          color: Colors.amberAccent,
+                          color: Colors.deepPurpleAccent,
                           size: 30.0,
                         ),
                       ],

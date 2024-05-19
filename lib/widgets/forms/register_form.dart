@@ -51,15 +51,18 @@ class _RegisterFormState extends State<RegisterForm> {
   }
 
   void onSubmit() async {
+    // print(_levelController.text);
     Map<String, dynamic> userData = {
       "email": _emailController.text,
       "name": _nameController.text,
       "password": _passwordController.text,
-      "level": int.parse(_levelController.text),
-      "gender": _genderController.text,
+      "level": _levelController.text.isNotEmpty
+          ? int.parse(_levelController.text)
+          : null,
+      "gender":
+          _genderController.text.isNotEmpty ? _genderController.text : null,
       "device_name": "mobile",
     };
-
 
     // print(userData);
 
@@ -84,7 +87,8 @@ class _RegisterFormState extends State<RegisterForm> {
           fontSize: 16.0,
         );
         if (mounted) {
-          Navigator.pushReplacementNamed(context, "/home");
+          Navigator.pop(context);
+          Navigator.popAndPushNamed(context, "/home");
         }
         // }
       } catch (e) {
@@ -199,7 +203,7 @@ class _RegisterFormState extends State<RegisterForm> {
                           width: 10,
                         ),
                         SpinKitDoubleBounce(
-                          color: Colors.amberAccent,
+                          color: Colors.deepPurpleAccent,
                           size: 30.0,
                         ),
                       ],

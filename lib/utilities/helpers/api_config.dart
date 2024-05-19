@@ -1,12 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 class ApiConfig {
-  final String baseUrl = 'https://mobile-flutter-backend.vercel.app/';
-  static const int _timeoutLimit = 10;
+  static const String baseUrl = 'https://mobile-flutter-backend.vercel.app/';
+
+  static String get apiBaseUrl => '${baseUrl}api';
+  static const int _timeoutLimit = 50;
 
   Future<dynamic> get({required String endpoint, String? token}) async {
     Map<String, String> headers = {};
@@ -20,12 +23,12 @@ class ApiConfig {
           headers: headers,
         )
         .timeout(const Duration(seconds: _timeoutLimit));
+
+    final responseData = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
-      return data;
+      return responseData;
     } else {
-      throw Exception(
-          'there is problem with status code ${response.statusCode}');
+      throw Exception('${responseData['message']}');
     }
   }
 
@@ -41,7 +44,8 @@ class ApiConfig {
       headers.addAll({'authorization': 'Bearer $token'});
     }
 
-    // print(headers);
+    // print(headers.toString());
+    // print(body);
     try {
       http.Response response = await http
           .post(Uri.parse('$baseUrl$endpoint'),

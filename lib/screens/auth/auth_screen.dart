@@ -12,7 +12,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Authentication')),
+      // appBar: AppBar(title: const Text('Authentication')),
       body: Center(
         child: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
@@ -33,7 +33,8 @@ class AuthScreen extends StatelessWidget {
                     Text('Email: ${state.user!.email}'),
                     Text('Role: ${state.user!.role}'),
                     ElevatedButton(
-                      onPressed: () => context.read<AuthCubit>().logout(),
+                      onPressed: () async =>
+                          {await context.read<AuthCubit>().logout()},
                       child: const Text('Logout'),
                     ),
                   ],
