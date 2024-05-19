@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restaurants_sys/models/store_product_model.dart';
 import 'package:restaurants_sys/utilities/cubits/get_store_products_states.dart';
 import '../../models/product_model.dart';
 import '../services/products_service.dart';
