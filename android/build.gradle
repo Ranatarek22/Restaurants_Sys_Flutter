@@ -1,7 +1,21 @@
-allprojects {
+ allprojects {
+     repositories {
+         google()
+         mavenCentral()
+     }
+}
+
+buildscript {
+    ext.kotlin_version = '1.7.10' // Change here
     repositories {
         google()
         mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 

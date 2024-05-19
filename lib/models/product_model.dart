@@ -18,13 +18,15 @@ class ProductModel {
     required this.createdAt,
     @required this.storeLinkId,
     @required this.stores,
+    required store,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     // Parse the list of stores into a list of StoreProductModel objects
     List<StoreProductModel>? storeProducts = [];
     if (json['stores'] != null) {
-      storeProducts = List<StoreProductModel>.from(json['stores'].map((storeJson) => StoreProductModel.fromJson(storeJson)));
+      storeProducts = List<StoreProductModel>.from(json['stores']
+          .map((storeJson) => StoreProductModel.fromJson(storeJson)));
     }
 
     return ProductModel(
@@ -35,6 +37,7 @@ class ProductModel {
       createdAt: json['createdAt'],
       storeLinkId: json['storeLinkId'],
       stores: storeProducts,
+      store: null,
     );
   }
 }

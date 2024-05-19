@@ -1,5 +1,4 @@
 import 'package:restaurants_sys/models/store_model.dart';
-import 'package:restaurants_sys/models/store_product_model.dart';
 import '../helpers/api_config.dart';
 
 class StoresService {

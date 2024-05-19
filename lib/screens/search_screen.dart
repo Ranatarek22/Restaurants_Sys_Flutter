@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_sys/screens/product_stores_screen.dart';
+import 'package:restaurants_sys/widgets/map_widget.dart';
 
 import '../models/product_model.dart';
 import '../utilities/cubits/product_search_cubit.dart';
@@ -14,6 +15,15 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _controller = TextEditingController();
   List<ProductModel> productList = [];
+  String searchedProductId = '';
+
+  bool _isMapView = false;
+
+  void _toggleView() {
+    setState(() {
+      _isMapView = !_isMapView;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,13 +76,13 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: const EdgeInsets.only(left: 20),
               child: ListView.separated(
                 itemCount: productList.length,
-                separatorBuilder: (context, index) => Divider(),
+                separatorBuilder: (context, index) => const Divider(),
                 itemBuilder: (context, index) {
                   final product = productList[index];
                   return ListTile(
                     title: Text(
                       product.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -94,7 +104,7 @@ class _SearchScreenState extends State<SearchScreen> {
           } else if (state is SearchFailureState) {
             return Center(child: Text(state.errorMessage));
           } else if (state is SearchLoadingState) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else {
