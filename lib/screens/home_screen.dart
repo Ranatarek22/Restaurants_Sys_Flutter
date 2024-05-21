@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_sys/screens/search_screen.dart';
 import 'package:restaurants_sys/screens/stores_screen.dart';
-import '../utilities/cubits/them_cubit.dart';
 import 'auth/auth_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _screens = <Widget>[
     const StoresScreen(),
     SearchScreen(), // Add your other screens here
-    Placeholder(),
-    AuthScreen(),
+    const Placeholder(),
+    const AuthScreen(),
   ];
 
   void _onItemTapped(int index) {

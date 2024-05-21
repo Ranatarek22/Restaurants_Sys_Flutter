@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_sys/screens/product_stores_screen.dart';
-import 'package:restaurants_sys/widgets/map_widget.dart';
 
 import '../models/product_model.dart';
 import '../utilities/cubits/product_search_cubit.dart';
@@ -53,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             _controller.text.length > 0
                 ? IconButton(
-                    icon: Icon(Icons.clear),
+                    icon: const Icon(Icons.clear),
                     onPressed: () {
                       setState(() {
                         _controller.clear();

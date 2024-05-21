@@ -27,7 +27,6 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _levelController = TextEditingController();
-  final TextEditingController _studentIdController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   bool _isSubmitting = false;
@@ -36,18 +35,6 @@ class _RegisterFormState extends State<RegisterForm> {
   void initState() {
     //TODO: implement initState
     super.initState();
-  }
-
-  //used to free memory taken like destructor
-  @override
-  void dispose() async {
-    super.dispose();
-    _emailController.dispose();
-    _nameController.dispose();
-    _passwordController.dispose();
-    _genderController.dispose();
-    _levelController.dispose();
-    _studentIdController.dispose();
   }
 
   void onSubmit() async {
@@ -72,8 +59,6 @@ class _RegisterFormState extends State<RegisterForm> {
       });
 
       try {
-        // Auth auth = Provider.of<Auth>(context, listen: false);
-        // await auth.register(userData: userData);
         await context.read<AuthCubit>().register(userData: userData);
 
         // if (auth.user != null) {

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_sys/models/product_model.dart';
-import 'package:restaurants_sys/models/store_model.dart';
 import 'package:restaurants_sys/widgets/custom_store_card.dart';
 import 'package:restaurants_sys/widgets/map_widget.dart';
 

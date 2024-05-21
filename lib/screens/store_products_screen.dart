@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_sys/models/store_model.dart';
 import 'package:restaurants_sys/models/product_model.dart';
-import 'package:restaurants_sys/screens/search_screen.dart';
 import 'package:restaurants_sys/utilities/cubits/get_store_products_states.dart';
 import 'package:restaurants_sys/widgets/custom_product_card.dart';
 import '../utilities/cubits/get_store_products_cubit.dart';
