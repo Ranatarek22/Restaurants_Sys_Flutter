@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurants_sys/models/product_model.dart';
 import 'package:restaurants_sys/models/store_model.dart';
+import 'package:restaurants_sys/widgets/store_directions_map.dart';
 
 class CustomStoreCard extends StatelessWidget {
   const CustomStoreCard(
@@ -11,7 +12,15 @@ class CustomStoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => StoreDirectionsMap(store: store),
+          ),
+        );
+      },
       child: Container(
             decoration: BoxDecoration(
               boxShadow: [
@@ -23,7 +32,7 @@ class CustomStoreCard extends StatelessWidget {
               ],
             ),
             width: 200,
-            height: 220,
+            height: 250,
             child: Card(
               color: Colors.white,
               child: Padding(
@@ -32,8 +41,8 @@ class CustomStoreCard extends StatelessWidget {
                   children: [
                     Image.asset(
                       store.type=='RESTAURANT'?'assets/images/rest.png':'assets/images/cafe.png',
-                      height: 100,
-                      width: 100,
+                      height: 80,
+                      width: 80,
                     ),
                     Expanded(
                       child: Column(

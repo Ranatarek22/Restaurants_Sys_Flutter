@@ -27,7 +27,7 @@ class _MapWidgetState extends State<MapWidget> {
   @override
   void initState() {
     super.initState();
-    polylineFuture = getPolyline(startPoint, endPoint);
+    //polylineFuture = getPolyline(startPoint, endPoint);
     markers = getMarkers();
     // _getCurrentLocation();
   }
@@ -108,17 +108,17 @@ class _MapWidgetState extends State<MapWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<Polyline>(
-        future: polylineFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(
-                child: Text('Error loading polyline: ${snapshot.error}'));
-          } else if (snapshot.hasData) {
-            final polyline = snapshot.data ?? Polyline(points: []);
-            return FlutterMap(
+      body: //FutureBuilder<markers>(
+        // future: markers,
+        // builder: (context, snapshot) {
+        //   if (snapshot.connectionState == ConnectionState.waiting) {
+        //     return const Center(child: CircularProgressIndicator());
+        //   } else if (snapshot.hasError) {
+        //     return Center(
+        //         child: Text('Error loading polyline: ${snapshot.error}'));
+        //   } else if (snapshot.hasData) {
+        //     final polyline = snapshot.data ?? Polyline(points: []);
+        FlutterMap(
               options: const MapOptions(
                 initialCenter: LatLng(30.1006, 31.380653),
                 initialZoom: 11,
@@ -130,26 +130,26 @@ class _MapWidgetState extends State<MapWidget> {
                 MarkerLayer(
                   markers: markers,
                 ),
-                PolylineLayer(
-                  polylines: [
-                    polyline,
-                  ],
-                ),
+                // PolylineLayer(
+                //   polylines: [
+                //     polyline,
+                //   ],
+                // ),
               ],
-            );
-          } else {
-            return const Center(child: Text('No polyline data'));
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            polylineFuture = getPolyline(startPoint, endPoint);
-          });
-        },
-        child: const Icon(Icons.add),
-      ),
+            ),
+          // } else {
+          //   return const Center(child: Text('No polyline data'));
+          // }
+        //},
+      //),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     setState(() {
+      //       polylineFuture = getPolyline(startPoint, endPoint);
+      //     });
+      //   },
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
